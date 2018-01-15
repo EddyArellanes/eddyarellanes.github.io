@@ -1,0 +1,16 @@
+User-Agent: Googlebot
+Disallow: /images
+
+User-Agent: Bingbot
+Disallow: /images
+
+User-Agent: Applebot 
+Disallow: /images
+
+User-Agent: msnbot
+Disallow: /images
+
+User-Agent: yandex
+Disallow: /images
+
+sitemap: https://www.eddyarellanes.github.io/sitemap.xml
