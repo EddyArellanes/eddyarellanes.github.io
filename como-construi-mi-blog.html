@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<style type="text/css">
+	.header-background{
+		background-image: url('images/background.jpeg');
+		background-size: cover;
+		padding: 3%;
+
+	}
+	.title{
+		font-size: 3.2em!important;
+		padding-top: 0!important;
+	}
+	.subtitle{
+		font-size: 2.3em!important;
+	}
+	.subsubtitle{
+		font-size: 1.5em!important;
+	}
+	.blog-subtitle{
+		font-size: 1.0em!important;
+	}
+	.max-image-block{
+		max-width: 80px!important;
+		max-height: 155px!important;
+	}
+	.horizontal-center{
+		margin: 0 auto!important;
+	}
+	.padding-0-5-em{
+		padding: 0.5em!important;
+	}
+	.blog-a{
+		color: black!important;
+	}
+</style>
+<head>
+	<link rel="shortcut icon" href="images/favicon.png">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta title="Bienvenido a mi Blog - Eddy Arellanes Bastida">
+	<meta name="description" content="Es por ello que hoy les comparto sin que usen Wappalyzer o BuiltWith, como construí mi sitio y qué se viene después...">
+	<meta name="keywords" content="Arellanes,Bastida,Blog,Oficial,Sitio,Construcción, HTML5,MaterializeCss,Javascript">
+    <meta name="author" content="Eddy Arellanes Bastida">
+    <meta name="owner" content="Eddy Arellanes Bastida">
+    
+    <meta name="robots" content="index, follow">
+	<title>¿Como construí ésta web? - Blog</title>
+</head>
+<body>
+	<header class="white-text header-background">
+		<h1 class="title">Eddy Arellanes Bastida</h1>
+		<h2 class="subtitle">Blog</h2>
+	</header>
+	<nav class="black">
+    		<div class="nav-wrapper">
+      			<a href="#!" class="brand-logo"><i class="large material-icons white-text">wb_sunny</i></a>
+      			<ul class="right hide-on-med-and-down">
+        			<li><a href="index.html"><i class="material-icons left">home</i>Inicio</a></li>
+        			<li><a href="aboutme.html"><i class="material-icons left">face</i>Acerca de Mí</a></li>
+        			<li><a href="index.html#Skills"><i class="material-icons left">insert_chart</i>Habilidades</a></li>
+        			<li><a href="index.html#Projects"><i class="material-icons left">work</i>Proyectos</a></li>
+        			<li><a href="blog.html"><i class="material-icons left">note</i>Blog</a></li>
+      			</ul>
+    		</div>
+  	</nav>
+	<main class="">		
+		<div class="row" id="Blog">			
+			<div class="col s12 m8 l8 ">			    
+				<div class="card">			    	
+					<div class="card-image">
+					   	<h3 class="header subsubtitle padding-0-5-em">Creando el Sitio</h3>
+				        <h4 class="padding-0-5-em">¿Como construí ésta web?</h4>
+					    <img src="images/blog/2-html5.png" class="max-image-block horizontal-center">
+					</div>
+					<div class="card-content">				     	
+				       	<p>Como Developer, soy muy curioso siempre que visito un sitio me gusta explorar en qué están hechos y con qué herramientas.</p>
+				        <p>Es por ello que hoy les comparto sin que usen Wappalyzer o BuiltWith, como construí mi sitio y qué se viene después, entonces empecemos</p>
+
+				        <br>
+				        <p>Todas las Páginas Web, usan por regla HTML5, Css3 y Javascript, es decir js se puede desactivar en los navegadores, pero hoy en día son el corazón de las webs entonces nadie incurriría a desactivarlo en estos días.</p>
+
+				        <h5>Tecnologías Usadas en la Página de Eddy Arellanes Bastida 2018 Beta</h5>
+				        <p>(Sí, ésta es la versión Beta de la Página, espero poder liberar la versión final)</p>
+
+				        <ul class="collection">
+      						<li class="collection-item">HTML5</li>
+      						<li class="collection-item">CSS3</li>
+      						<li class="collection-item">MaterializeCSS Alpha 1.0 (Es Fantástica)</li>
+      						<li class="collection-item">Github Pages</li>
+    					</ul>
+    					<p>Para ésta primera versión sólo utilice Javascript para inicializar una función de MaterializeCss, por ende no considero que lo haya usado y no lo puse.</p>
+    					<p>Algunos estilos personalizados de espaciado y formato a textos se los dí con Css3, y por último maqueté la Página con HTML usando tags de HTML5 como los header, main, footer, nav, articles, etc.</p>
+            			
+            			<h5>¿Qué sigue?</h5>
+            			<p><b>Fase 1: </b>Bueno, primero que nada quiero terminar de desarrollar la sección de Portafolio, Optimizaré SEO en las páginas ya existentes.</p>
+            			<p><b>Fase 2: </b>Implementar React para automatizar mi Página volviéndola Componentes, esto es una ventaja para darle mantenimiento a una Página</p>
+            			<p><b>Fase 3: Añadir un Backend</b></p>
+            			<p>Para administrar la información de la web como el Blog, para esto estoy aún contemplando entre dos opciones:</p>
+            			<ul class="collection">
+            				<li class="collection-item">Python + Django</li>
+            				<li class="collection-item">Firebase</li>
+            			</ul>
+            			<p>Es importante elegir bien porque en base a eso se decidirá el futuro de mi sitio</p>
+            			<p><b>Fase 4: Añadir Server Side Rendering, </b></p><p>como sabemos React renderiza todo desde el lado del cliente, por ello quiero una vez implementado el Backend, crear el SSR para poder renderizar la información desde el principio y los Robots puedan encontrar mi Data</p>
+            			<p><b>Fase 5: Última FaseMigración a IaaS o PaasS</b></p>
+            			<p>Github es cool y le tengo mucho cariño, sin embargo para futuras cosas, necesitaré tener el control del servidor donde alojo mi sitio, por lo que planeo migrar este sitio a una de éstas opciones:</p>
+            			<ul class="collection">
+            				<li class="collection-item">Amazon Web Services</li>
+            				<li class="collection-item">Microsoft Azure</li>
+            				<li class="collection-item">Digital Ocean</li>
+            			</ul>
+            			<p>De momento están ordenadas según me convencen más, tengo preferencia por Amazon por la sencilla razón que tengo más experiencia con él, con Azure tengo muy poca, y con Digital Ocean nada.</p>
+
+            			<p><b>Adicional: Metodología de Proyecto</b></p>
+            			<p>Planeo aplicar una metodología de trabajo PMP pero agregando Metodologías Ágiles, estoy entre Scrum y EXtreme Programming(XP), espero aplicarlas con Disciplina o no servirán de nada.</p>
+
+            			<p>Bien, eso es todo por ésta entrada, más adelante editaré esta entrada y le agregaré los iconitos respectivos para que se vea más cool.</p>
+            			<p>Hasta Luego!</p>
+				      	
+					</div>				    
+				</div>
+			</div>	
+			<div class="col s12 m4 l4">				
+				<a href="bienvenido-a-mi-blog.html">	
+					<article>
+						<div class="col s12 blog-a">
+							<div class="card">			    	
+								<div class="card-image waves-effect waves-block waves-light">
+									<h3 class="header subsubtitle padding-0-5-em">Creando el Sitio</h3>
+								    <h4 class="blue-text blog-subtitle padding-0-5-em">¿Como construí ésta web?</h4>
+									<img src="images/blog/1-cappy.png" class="max-image-block horizontal-center">
+								</div>
+								<div class="card-content">				     	
+							        <p>Buenos días, tardes o noches a ti que lees esto ahora mismo, primero que nada déjame decirte que te agradezco por tomarte el tiempo de tomar lectura de esto.</p>
+				          			<p>Mi Nombre es Eddy Arellanes Bastida y este es mi blog donde escribiré sobre diversas cosas que van desde...</p>
+								      
+
+								</div>				    
+							</div>
+						</div>
+					</article>
+				</a>		
+			</div> 						
+		</div>		
+	</main>
+	
+		
+   	<footer class="page-footer black">
+        <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Contacto</h5>
+                <p class="grey-text text-lighten-4">Si deseas ponerte en contacto conmigo por alguna razón, te dejó mis datos de contacto</p>
+                <ul>
+                	<li><i class="material-icons">email</i>Teléfono: <strong>5574852528</strong></li>
+                	<li><i class="material-icons">phone</i>Correo Electrónico: <strong>eddyarellanes.developer@gmail.com</strong></li>
+                </ul>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Redes Sociales</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!" target="_blank">Facebook</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://www.linkedin.com/in/eddy-arellanes-bastida-440025ab/" target="_blank">Linkedin</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://github.com/EddyArellanes" target="_blank">Github</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://codefights.com/profile/eddyinferno" target="_blank">Codefights</a></li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+            	© Enero 2018 Última actualización
+            	<a class="grey-text text-lighten-4 right" href="#!"><i class="material-icons">link</i>Página de Facebook: Technology Corps</a>
+            </div>
+        </div>
+    </footer>
+</body>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">   
+<link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js"></script>
+<script type="text/javascript">
+	var elem = document.querySelector('.collapsible');
+  	var instance = M.Collapsible.init(elem, {accordion:false});
+</script>
+</html>
