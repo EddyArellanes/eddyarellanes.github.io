@@ -62,6 +62,21 @@
         			<li><a href="index.html#Projects"><i class="material-icons left">work</i>Proyectos</a></li>
         			<li><a href="blog.html"><i class="material-icons left">note</i>Blog</a></li>
       			</ul>
+      			<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      			<ul id="slide-out" class="sidenav">
+    				<li><a href="index.html" class="waves-effect hamburguer"><i class="material-icons left">home</i>Inicio</a></li>    				
+        			<li><a href="aboutme.html" class="waves-effect "><i class="material-icons left">face</i>Acerca de Mí</a></li>
+    				<li><a href="index.html#Skills" class="waves-effect hamburguer"><i class="material-icons left">insert_chart</i>Habilidades</a></li>    			    				
+    				<li><a href="index.html#Projects" class="waves-effect hamburguer"><i class="material-icons left">work</i>Proyectos</a></li>    		
+    				<li><a href="blog.html"><i class="material-icons left">note</i>Blog</a></li>    				
+  				</ul>
+  				<ul id="slide-out" class="sidenav">
+    				<li><a href="index.html" class="waves-effect hamburguer"><i class="material-icons left">home</i>Inicio</a></li>    				
+        			<li><a href="aboutme.html" class="waves-effect"><i class="material-icons left">face</i>Acerca de Mí</a></li>
+    				<li><a href="index.html#Skills" class="waves-effect hamburguer"><i class="material-icons left">insert_chart</i>Habilidades</a></li>    			    				
+    				<li><a href="index.html#Projects" class="waves-effect hamburguer"><i class="material-icons left">work</i>Proyectos</a></li>    		
+    				<li><a><i class="material-icons left">note</i>Blog</a></li>    				
+  				</ul>
     		</div>
   	</nav>
 	<main class="">		
@@ -152,8 +167,12 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">   
 <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js"></script>
-<script type="text/javascript">
-	var elem = document.querySelector('.collapsible');
-  	var instance = M.Collapsible.init(elem, {accordion:false});
+<script type="text/javascript">	
+  	let sidenav = document.querySelector('.sidenav');
+  	var sidenavComponent = M.Sidenav.init(sidenav, {accordion:false});
+  	var hamburguerElements = document.getElementsByClassName("hamburguer");
+  	for(let counter = 0; counter<hamburguerElements.length; counter++){
+        hamburguerElements[counter].addEventListener("click", ()=>sidenavComponent.close())
+    }
 </script>
 </html>

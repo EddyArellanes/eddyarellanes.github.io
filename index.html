@@ -34,21 +34,30 @@
 	<title>Eddy Arellanes Bastida</title>
 </head>
 <body>
-	<header class="white-text header-background">
+	<header class="white-text header-background Home">
 		<h1 class="title">Eddy Arellanes Bastida</h1>
 		<h2 class="subtitle">¡Bienvenido a mi pequeño espacio!</h2>
 	</header>
 	<nav class="black">
     		<div class="nav-wrapper">
       			<a href="#!" class="brand-logo"><i class="large material-icons white-text">wb_sunny</i></a>
-      			<ul class="right hide-on-med-and-down">
-        			<li><a href="#"><i class="material-icons left">home</i>Inicio</a></li>
+      			<ul class="right hide-on-med-and-down side-nav" id="mobile-demo">
+        			<li><a href="#Home"><i class="material-icons left">home</i>Inicio</a></li>
         			<li><a href="aboutme.html"><i class="material-icons left">face</i>Acerca de Mí</a></li>
         			<li><a href="#Skills"><i class="material-icons left">insert_chart</i>Habilidades</a></li>
         			<li><a href="#Projects"><i class="material-icons left">work</i>Proyectos</a></li>
         			<li><a href="blog.html"><i class="material-icons left">note</i>Blog</a></li>
       			</ul>
+      			<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      			<ul id="slide-out" class="sidenav">
+    				<li><a href="#Home" class="waves-effect hamburguer"><i class="material-icons left">home</i>Inicio</a></li>    				
+        			<li><a href="aboutme.html" class="waves-effect "><i class="material-icons left">face</i>Acerca de Mí</a></li>
+    				<li><a href="#Skills" class="waves-effect hamburguer"><i class="material-icons left">insert_chart</i>Habilidades</a></li>    			    				
+    				<li><a href="#Projects" class="waves-effect hamburguer"><i class="material-icons left">work</i>Proyectos</a></li>    		
+    				<li><a href="blog.html"><i class="material-icons left">note</i>Blog</a></li>    				
+  				</ul>
     		</div>
+
   	</nav>
 	<main class="">
 		<div class="row" id="AboutMe">
@@ -64,7 +73,7 @@
 			          <p>Soy entusiasta de la Informática y estoy interesado en Data Science, IA, Seguridad Informática, Servidores, y mucho más.</p>
 			        </div>
 			        <div class="card-action">
-			          <a href="#" class="black-text waves-effect">¡Conoce más sobre mí!</a>
+			          <a href="aboutme.html" class="black-text waves-effect">¡Conoce más sobre mí!</a>
 			        </div>
 			      </div>
 			    </div>
@@ -271,7 +280,14 @@
 <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js"></script>
 <script type="text/javascript">
-	var elem = document.querySelector('.collapsible');
-  	var instance = M.Collapsible.init(elem, {accordion:false});
+	let collapsible = document.querySelector('.collapsible');
+  	M.Collapsible.init(collapsible, {accordion:false});
+
+  	let sidenav = document.querySelector('.sidenav');
+  	var sidenavComponent = M.Sidenav.init(sidenav, {accordion:false});
+  	var hamburguerElements = document.getElementsByClassName("hamburguer");
+  	for(let counter = 0; counter<hamburguerElements.length; counter++){
+        hamburguerElements[counter].addEventListener("click", ()=>sidenavComponent.close())
+    }
 </script>
 </html>
