@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">    
+    <link rel="stylesheet" href="http://sandbox.superboletos.com/SuperBoletosRepositorio/plugins/mapSB/v1/css/mapSB.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://sandbox.superboletos.com/SuperBoletosRepositorio/plugins/mapSB/v1/js/mapSB.min.js"></script>
+
+    <title>Plugin Map</title>
+</head>
+<body>
+    <div id='mapWrapper'>
+
+    </div>
+    <style>
+        #mapWrapper{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <script>
+        
+    $(document).ready(function(){
+        
+        var options = {
+            apiKey: 'DAFA83AB4BA9ADF18162509633199219',
+            eventId: '3x2JdUshlqaJnikhuqircg',
+            elementType: 'ABONO',
+            presentationId: 'Ygbv-3v5MTDWTPpQie-4CA',
+            userId: 'iQbbRaSOB3fnnYj1_Oq9wlcUXSLDQpl9GcPw4dQij2I',
+            presaleType: '',
+            transactionId: 'cf6oj3D5TfvvhYj3Ss4wbSqDbKx474I238v_WxwNZ48',
+            onInitialized: function(status, error){
+                alert('Inititalized plugin: ' + status);
+            }
+        }
+    
+        var myMap = $('#mapWrapper').mapSB(options).data('mapSB');
+    })
+
+
+    </script>
+</body>
+</html>
