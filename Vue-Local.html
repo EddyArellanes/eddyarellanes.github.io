@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        
+            
+	<title></title>
+</head>
+<body>
+  <div id="app">    
+    <div class="row" v-if="tasks.length > 0">                    
+      <div class="card col l4 s12 offset-l4 no-margin-y blue white-text">
+        <p>Lista de Tareas</p>
+      </div> 
+      <div class="card col l4 s12 offset-l4 no-margin-y" v-for="(task, index) in tasks">
+        <div class="col l6 s6">
+            <div>
+                <small>Tarea:</small><p>{{task.name}}</p>
+            </div>
+            <div v-if="task.description">
+                <small>Descripción:</small><p>{{task.description}}</p>
+            </div>
+            
+        </div>
+        <div class="col l6 s6">
+          <button class="btn margin-top-8" v-on:click="editTask(index)"><i class="material-icons">edit</i></button>
+          <button class="btn red margin-top-8" v-on:click="deleteTask(index)"><i class="material-icons">delete</i></button>
+        </div>
+      </div>    
+    </div>
+    <div class="row" v-else>
+      <div class="card col l4 s12 offset-l4 no-margin-y blue white-text">
+        <p>No Hay Tareas</p>
+      </div>
+    </div>
+    <!--Floating Menú MaterializeCss
+    <div class="fixed-action-btn toolbar">
+        <a class="btn-floating btn-large green">
+          <i class="large material-icons">menu</i>        
+        </a>
+        <ul>          
+          <li class="waves-effect waves-light"><a href="#!" style="opacity: 1;"><i class="material-icons">add</i></a></li>
+          <li class="waves-effect waves-light"><a href="#!" style="opacity: 1;"><i class="material-icons">format_quote</i></a></li>
+          <li class="waves-effect waves-light"><a href="#!" style="opacity: 1;"><i class="material-icons">publish</i></a></li>
+          <li class="waves-effect waves-light"><a href="#!" style="opacity: 1;"><i class="material-icons">attach_file</i></a></li>
+        </ul>
+    </div>
+    -->
+    <!--Normal Action Float Button-->
+    <div class="fixed-action-btn">
+      <a class="btn-floating btn-large blue">
+        <i class="large material-icons">menu</i>
+      </a>
+      <ul>
+        <li><a class="btn-floating green modal-trigger" href="#addTask"><i class="material-icons">add</i></a></li>        
+        <li><a class="btn-floating blue" v-on:click="deleteAllTasks"><i class="material-icons">edit</i></a></li>        
+        <li><a class="btn-floating red" v-on:click="deleteAllTasks"><i class="material-icons">delete</i></a></li>        
+      </ul>
+    </div> 
+    <!--Modal to Set New Data-->
+    <div id="addTask" class="modal">
+      <form v-on:submit.prevent="addTask">
+        <div class="modal-content">
+          <h4>Nueva Tarea</h4>    
+          <div class="row">
+              <div class="input-field col s12">
+                <input 
+                  id="taskName " 
+                  class="validate"
+                  type="text" 
+                  placeholder="Ej. Hacer 20 flexiones" 
+                  v-model="tasksSchema.name" 
+                  required>
+                <label for="taskName">Nombre</label>
+              </div>
+              <div class="input-field col s12">
+                <input 
+                  id="taskDescription" 
+                  class="validate"
+                  type="text" 
+                  placeholder="Ej. Ejercicio de todos los días" 
+                  v-model="tasksSchema.description" >
+                <label for="taskDescription">Descripción</label>
+              </div>          
+          </div>  
+        </div>
+        <div class="modal-footer">     
+          <button type="submit" class="waves-effect waves-green btn green"><i class="material-icons">add</i></button>
+        </div>
+      </form>
+    </div>
+    <div id="editTask" class="modal">
+      <form v-on:submit.prevent="updateTask">
+        <div class="modal-content">
+          <h4>Editar Tarea {{tasksSchemaUpdate.name}}</h4>    
+          <div class="row">
+              <div class="input-field col s12">
+                <input 
+                  id="taskName " 
+                  class="validate"
+                  type="text" 
+                  placeholder="Ej. Hacer 20 flexiones" 
+                  v-model="tasksSchemaUpdate.name" 
+                  required>
+                <label for="taskName">Nombre</label>
+              </div>
+              <div class="input-field col s12">
+                <input 
+                  id="taskDescription" 
+                  class="validate"
+                  type="text" 
+                  placeholder="Ej. Ejercicio de todos los días" 
+                  v-model="tasksSchemaUpdate.description" >
+                <label for="taskDescription">Descripción</label>
+              </div>          
+          </div>  
+        </div>
+        <div class="modal-footer">     
+          <button type="submit" class="waves-effect waves-green btn green"><i class="material-icons">add</i></button>
+        </div>                                   
+     </form>
+  </div>
+</div>   
+    
+<style type="text/css">
+  body{
+    margin: 0;
+    padding: 0;
+  }
+  .no-margin-y{
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .border-bottom-card{
+    border-bottom: solid 1px #b0b0b0;
+  }
+  .margin-top-8{
+    margin-top: 8px;
+  }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script>
+  let App = new Vue({
+  el: '#app',
+  data: {
+    uiModalAddTask: '',
+    uiModalEditTask: '',
+    uiMenuButton: '',
+    message: 'Hello World',  
+    tasks: [],
+    tasksSchema: {
+      name: '',
+      description: '',      
+    },
+    tasksSchemaUpdate:{
+      id: '',
+      name: '',
+      description: '', 
+    }
+  },
+  mounted: function(){
+    //MaterializeCss Initalizer          
+      this.uiModalAddTask = M.Modal.init(document.querySelector('#addTask'), {})
+      this.uiModalEditTask = M.Modal.init(document.querySelector('#editTask'), {})
+      this.uiMenuButton = M.FloatingActionButton.init(document.querySelector('.fixed-action-btn'), {
+        //Change to Turn On Toolbar and Uncomment HTML Code Above
+        toolbarEnabled: false
+      })      
+    //LocalStorage Function    
+    this.getAllTasks()
+  },
+  methods: {
+    getAllTasks(){   
+      let tasksStorage = JSON.parse(localStorage.getItem("tasks"))
+      this.tasks = ( tasksStorage == null) ? new Array() : tasksStorage
+      
+    },
+    addTask(){
+        
+      this.tasks.push({name: this.tasksSchema.name, description: this.tasksSchema.description})
+      localStorage.setItem("tasks", JSON.stringify(this.tasks))
+      //Success Message Here  
+      this.uiModalAddTask.close()
+      this.getAllTasks()                  
+      this.clearSchemaTask()      
+      
+    },
+    editTask(index){
+      this.tasksSchemaUpdate.id = index
+      this.tasksSchemaUpdate.name = this.tasks[index].name
+      this.tasksSchemaUpdate.description = this.tasks[index].description
+      this.uiModalEditTask.open()
+    },
+   updateTask(){
+      this.tasks[this.tasksSchemaUpdate.id].name = this.tasksSchemaUpdate.name
+      this.tasks[this.tasksSchemaUpdate.id].description = this.tasksSchemaUpdate.description
+      localStorage.setItem("tasks", JSON.stringify(this.tasks))
+      this.uiModalEditTask.close()
+      this.getAllTasks()
+    },
+    deleteTask(index){
+
+      this.tasks.splice(index, 1)
+      localStorage.setItem("tasks", JSON.stringify(this.tasks))
+      this.getAllTasks()
+    },
+    deleteAllTasks(){
+      localStorage.removeItem("tasks")      
+      this.getAllTasks()
+    },
+    clearSchemaTask(){
+      this.tasksSchema.name = ""
+      this.tasksSchema.description = ""
+    }
+  }
+})
+</script>
+</body>
+</html>
