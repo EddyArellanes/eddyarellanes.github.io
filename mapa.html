@@ -23,8 +23,32 @@
     <script>
         
     $(document).ready(function(){
+        var get = window.location.search.substr(1)
+        var getSplitted = get.split("&");
+        var params = {}
+        for ( var i = 0; i < getSplitted.length; i++) {
+            var tempArray = getSplitted[i].split("=");
+            params[tempArray[0]] = tempArray[1];
+        }
+       
+        
+         var options = {
+            apiToken: params['apiToken'],
+            eventId: params['eventId'],
+            elementType: params['elementType'],
+            presentationId: params['presentationId'],
+            userId: params['userId'],
+            presaleType: params['presaleType'],
+            transactionId: params['transactionId'],
+            onInitialized: function(status, error){
+               console.log('Inititalized plugin: ' + status);
+               console.log('Error: ' + error);
+            }
+        }
+        
+        /*
         var options = {
-            apiToken: "e1cbb38cbc8b4a3ce3574b1bdf02f4b3",
+            apiToken: 'e1cbb38cbc8b4a3ce3574b1bdf02f4b3',
             eventId: 'wgILPYA5CINa-mcGY2bTMg',
             elementType: 'EVENTO',
             presentationId: 'mFRjH1_SEr6Mq9HW66eTlg',
@@ -32,10 +56,10 @@
             presaleType: '',
             transactionId: 'VsnSRjpzZ3CAQoP6Rz2whw',
             onInitialized: function(status, error){
-                alert('Inititalized plugin: ' + status);
+               // alert('Inititalized plugin: ' + status);
             }
         }
-    
+        */
         var myMap = $('#mapWrapper').mapSB(options).data('mapSB');
     })
 
