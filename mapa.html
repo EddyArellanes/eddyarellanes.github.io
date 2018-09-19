@@ -4,11 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">    
+    <link rel="stylesheet" href="https://sandbox.superboletos.com/SuperBoletosRepositorio/plugins/mapSB/v1/css/mapSB.css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://sandbox.superboletos.com/SuperBoletosRepositorio/plugins/mapSB/v1/js/mapSB.min.js"></script>
 
-    <link rel="stylesheet" href="http://sandbox.superboletos.com/SuperBoletosRepositorio/plugins/mapSB/v1/css/mapSB.css" />
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="http://sandbox.superboletos.com/SuperBoletosRepositorio/plugins/mapSB/v1/js/mapSB.min.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>Plugin Map</title>
 </head>
 <body>
@@ -30,6 +29,7 @@
     <script>
         
     $(document).ready(function(){
+<<<<<<< HEAD
         var get = window.location.search.substr(1)
         var getSplitted = get.split("&");
         var params = {}
@@ -54,18 +54,22 @@
         }
         var myMap = $('#mapWrapper').mapSB(options).data('mapSB');
         /*
+=======
+
+>>>>>>> a001003c330c3ce224263aa240a8d09975c85672
         var options = {
-            apiToken: 'e1cbb38cbc8b4a3ce3574b1bdf02f4b3',
-            eventId: 'wgILPYA5CINa-mcGY2bTMg',
-            elementType: 'EVENTO',
-            presentationId: 'mFRjH1_SEr6Mq9HW66eTlg',
-            userId: 'GUEST',
+            apiKey: 'DAFA83AB4BA9ADF18162509633199219',
+            eventId: '3x2JdUshlqaJnikhuqircg',
+            elementType: 'ABONO',
+            presentationId: 'Ygbv-3v5MTDWTPpQie-4CA',
+            userId: 'iQbbRaSOB3fnnYj1_Oq9wlcUXSLDQpl9GcPw4dQij2I',
             presaleType: '',
-            transactionId: 'VsnSRjpzZ3CAQoP6Rz2whw',
+            transactionId: 'cf6oj3D5TfvvhYj3Ss4wbSqDbKx474I238v_WxwNZ48',
             onInitialized: function(status, error){
-               // alert('Inititalized plugin: ' + status);
+                console.log('Inititalized plugin: ' + status)
             }
         }
+<<<<<<< HEAD
         */
         var button = document.getElementById("btn")
         button.addEventListener('click', function(){
@@ -92,6 +96,15 @@
     })
 
 
+=======
+        
+        alert(window.location.href)
+        console.log(document.querySelector(getElementById('#scroll-InputID')))
+        
+        var myMap = $('#mapWrapper').mapSB(options).data('mapSB');
+    })    
+    
+>>>>>>> a001003c330c3ce224263aa240a8d09975c85672
     </script>
 </body>
 </html>
