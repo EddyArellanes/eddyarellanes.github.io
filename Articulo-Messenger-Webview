@@ -1,0 +1,108 @@
+Poner un Webview funcionando en Messenger
+
+Bueno Hubo un buen de problemas con esta cosa.
+Actualmente trabajo en dos Bots 
+-Uno con la Plataforma de Bots de Oracle Mobile Cloud Enterprise
+-El otro completamente from scratch usando NodeJs y Now.sh
+
+Para el primer caso surgió un problema, el Bot como tal trae la funcionalidad de hacer compra de boletos de conciertos, partidos, etc. Para esto cuando eliges el evento te despliega una Card, la cuál tu al presionarla te manda a una Página web la cuál tiene toda la UI para elegir los lugares, elegir los métodos de pago, etc.
+El Issue surge cuando al presionar el botón desde Messenger de Android o iOS, te sale el mensaje de "Saliendo de Facebook, Solo queremos asegurarnos de que quieres seguir un enlace a este sitio web: <URL>"
+
+Entonces como sabrán, los usuarios se asustan con este mensaje, y no es nada agradable en cuánto a UX.
+Partiendo de este hecho me puse a Investigar.
+Lo primero que note es que en la Plataforma de Intelligent Bot de Oracle (la cuál te recomiendo del 1 al 10 un 0 :v) en la documentación 
+https://docs.oracle.com/en/cloud/paas/mobile-suite/use-chatbot/reference1.html#GUID-8B4929AD-81CB-4D69-87EE-5D29AAFFB203
+mencionan que para poder realizar un Evento de Abrir una URL, en el sistema YAML donde se define el flujo del Diálogo del Bot, es algo así:
+(Aquí básicamente yo estoy mostrando un texto simple y una carta con sus respectivas propiedades como título, descripción, imagen, etc.)
+ShowCardMap:
+     component: "System.CommonResponse"
+     properties:       
+       processUserMessage: true
+       metadata:        
+         responseItems:  
+         - type: "text"  
+           text: "¡Perfecto! ahora vamos a seleccionar tus lugares"
+         - type: "cards"
+           cardLayout: "horizontal"
+           name: "MainMenuCards"
+           cards:
+           - title: "Seleccionar Lugares"
+             description: "Mapa interactivo"
+             imageUrl: "https://d3e6c212.ngrok.io/resources/img/cards/Others/MapNew.jpg"                                                            
+             actions: 
+             - label: "Abrir"
+               type: "url"
+               channelCustomProperties: 
+               - channel: "facebook"
+                 properties:     
+                   webview_height_ratio: "full"
+                   messenger_extensions: true
+                   fallback_url: "http://eddyarellanes.github.io"
+               payload: 
+                 url: "https://d3e6c212.ngrok.io/index.html?apiKey=DAFA83AB4BA9ADF18162509633199219&eventId=mphentJY8rE9CziGxVy2iA&elementType=EVENTO&presentationId=SEJnXoH-bwDI2VXwhyLFRw&userId=FvBG6Q7cQg7nnhOR_ptl_w&presaleType=&transactionId=Np46xIssuiK-_TqkTXzYBQ&showMap=1&tickets=1&venue=Arena+Ciudad+de+Mexico&name=QA+FEY&date=26/10/2018-21+00&image=main_xxhdpi_EV32066+png?v=20180819202835&semiautomatic=0#/"
+               #Aqui falta algo                          
+ 
+         globalActions:
+         - label: "Consultar Eventos"
+           keyword: "Consultar"        
+           type: "postback"
+           name: "Menu"
+           payload:
+             action: "EventsFlowInit"                    
+         - label: "Puntos de Venta"
+           keyword: "Puntos de Venta"        
+           type: "postback"
+           name: "Puntos de Venta"
+           payload:
+             action: "SalesPointsFlowInit"               
+         - label: "Preguntas Frecuentes"
+           keyword: "Preguntas Frecuente"        
+           type: "postback"
+           name: "Preguntas Frecuentes"
+           payload:
+             action: "FrequentAsksFlowInit"
+         - label: "Terminar"
+           keyword: "terminar"        
+           type: "postback"
+           name: "Salir"
+           payload:
+             action: "Bye"             
+     transitions:
+       actions:     
+         EventsFlowInit: "EventsFlowInit"
+         SalesPointsFlowInit: "SalesPointsFlowInit"
+         FrequentAsksFlowInit: "FrequentAsksFlowInit"
+         Bye: "Bye"
+         textReceived: "Intent"
+
+
+Un pedazo de código bastante largo sin duda, pero bueno, los Postbacks de Messenger de por sí son JSON super anidados, no me quejo de esta parte con Oracle.
+Entonces hay una parte que dice "channelCustomProperties" que en un principio ni sabía que existía, pero existe, y es necesaria para lograr el objetivo.
+De hecho en la Documentación de Messenger Platform de los Webviews menciona que se tiene que desarrollar el Postback así:
+ "buttons":[
+  {
+    "type":"web_url",
+    "url":"https://www.messenger.com/",
+    "title":"URL Button",
+    "webview_height_ratio": "full",
+    "messenger_extensions": true,
+    "fallback_url": "https://www.messenger.com/"
+  }
+]
+
+Como ven, estas cosas son necesarias para que el Webview salga dentro de nuestro Messenger sin salir de Facebook, lo cuál es justo lo que yo necesitaba en ese momento. Pues bien lo agregué en la Plataforma de Oracle, y tras 1 hora codeando, me salía el mensaje de texto, pero la card nunca salía, en el teste si que salía, pero ¿Porqué?
+
+Leer bien te ahorra tiempo
+Bueeeeno, resulta que en el principio de la Documentación:
+https://developers.facebook.com/docs/messenger-platform/reference/buttons/url#syntax
+
+Al principio en grande y en un recuadro tiene este mensaje:
+"La propiedad whitelisted_domains del perfil de Messenger de tu bot especifica una lista de dominios de terceros a los que se puede acceder en la vista web de Messenger para usarse con el SDK de extensiones de Messenger y para el plugin de casilla de verificación."
+
+Y por eso. Es que no salía el mensaje, de hecho haciendo la misma prueba pero desde mi Bot from Scratch, Facebook me devuelve este mensaje:
+ message: '(#100) The URL provided is not whitelisted for messenger extensions
+
+ Ya, lo que hay que hacer ahora es poner el dominio requerido en las Whitelist, que esta en la documentación aquí:
+ https://developers.facebook.com/docs/messenger-platform/reference/messenger-profile-api/domain-whitelisting#requirements
+
+Con esto estará listo el Webview para abrir nuestras páginas :3y
