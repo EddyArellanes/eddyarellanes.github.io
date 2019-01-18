@@ -29,34 +29,6 @@
     <script>
         
     $(document).ready(function(){
-<<<<<<< HEAD
-        var get = window.location.search.substr(1)
-        var getSplitted = get.split("&");
-        var params = {}
-        for ( var i = 0; i < getSplitted.length; i++) {
-            var tempArray = getSplitted[i].split("=");
-            params[tempArray[0]] = tempArray[1];
-        }
-       
-        console.log(params)
-        var options = {
-            apiToken: params['apiKey'],
-            eventId: params['eventId'],
-            elementType: params['elementType'],
-            presentationId: params['presentationId'],
-            userId: params['userId'],
-            presaleType: params['presaleType'],
-            transactionId: params['transactionId'],
-            onInitialized: function(status, error){
-               console.log('Inititalized plugin: ' + status);
-               console.log('Error: ' + error);
-            }
-        }
-        var myMap = $('#mapWrapper').mapSB(options).data('mapSB');
-        /*
-=======
-
->>>>>>> a001003c330c3ce224263aa240a8d09975c85672
         var options = {
             apiKey: 'DAFA83AB4BA9ADF18162509633199219',
             eventId: '3x2JdUshlqaJnikhuqircg',
@@ -69,34 +41,6 @@
                 console.log('Inititalized plugin: ' + status)
             }
         }
-<<<<<<< HEAD
-        */
-        var button = document.getElementById("btn")
-        button.addEventListener('click', function(){
-            const csK = 'N4Pky927MvtwxY1MAiZSLJaQ5fMUBcBq' 
-            const api = axios.create({
-              baseURL: 'https://botSuperDEVBOTSCON-superboletos.uscom-central-1.oraclecloud.com:443/connectors/v1/tenants/idcs-11c25c26a33d410b95e7b31963d63cca/listeners/webhook/channels/9D9D42C1-5500-46BA-807D-10F727B136C1',
-              timeout: 5000,
-              headers: {
-                'Content-Type': 'application/json; charset=utf-8',
-                'X-Hub-Signature': buildSignatureHeader(body, csK)
-                }
-            });
-            axios.post('', {
-                firstName: 'Fred',
-                lastName: 'Flintstone'
-            })
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-        })
-    })
-
-
-=======
         
         alert(window.location.href)
         console.log(document.querySelector(getElementById('#scroll-InputID')))
@@ -104,7 +48,6 @@
         var myMap = $('#mapWrapper').mapSB(options).data('mapSB');
     })    
     
->>>>>>> a001003c330c3ce224263aa240a8d09975c85672
     </script>
 </body>
 </html>
