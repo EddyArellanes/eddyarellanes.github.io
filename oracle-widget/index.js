@@ -26,7 +26,7 @@ var initPromise = Bots.init({
         conversationTimestampHeaderFormat: 'MMMM D YYYY, h:mm A',
         fetchHistory: 'Cargar más',
         fetchingHistory: 'Recuperando la conversación...',
-        headerText: 'Como podemos ayudarte',
+        headerText: '',
         inputPlaceholder: 'Escribe un mensaje...',
         invalidFileError: 'Sólo están permitidas imágenes. Elije un archivo con una extensión válida (jpg, jpeg, png, gif, or bmp).',
         introductionText: 'Tu asistente virtual de UAP!',
