@@ -10,7 +10,7 @@ Webapge Color 2: #010000
 var initPromise = Bots.init({
     appId: '5b3cfe33d890e60022b7fefd',
     locale: 'es-MX',
-    businessName: 'La Costeña',
+    businessName: 'Sara',
     businessIconUrl: 'https://eddyarellanes.github.io/oracle-widget/assets/logo.jpg',        
     imageUploadEnabled: true,
     locationEnabled: false,
@@ -29,7 +29,7 @@ var initPromise = Bots.init({
         headerText: 'Como podemos ayudarte',
         inputPlaceholder: 'Escribe un mensaje...',
         invalidFileError: 'Sólo están permitidas imágenes. Elije un archivo con una extensión válida (jpg, jpeg, png, gif, or bmp).',
-        introductionText: 'Pregúntanos lo que quieras!',
+        introductionText: 'Tu asistente virtual de UAP!',
         locationNotSupported: 'Tu navegador no tiene soporte para servicios de localización. Por favor introduce tu localización manualmente.',        
         locationSecurityRestriction: 'Este sitio web no tiene acceso a tu localización. Por favor introduce tu localización manualmente.',
         locationSendingFailed: 'No se pudo enviar la ubicación',
