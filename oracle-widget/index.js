@@ -11,7 +11,7 @@ var initPromise = Bots.init({
     appId: '5b3cfe33d890e60022b7fefd',
     locale: 'es-MX',
     businessName: 'Sara',
-    businessIconUrl: 'https://eddyarellanes.github.io/oracle-widget/assets/logo.jpg',        
+    businessIconUrl: 'https://eddyarellanes.github.io/oracle-widget/assets/logo.png',        
     imageUploadEnabled: true,
     locationEnabled: false,
     customColors: {
@@ -71,7 +71,7 @@ function changeAvatar(){
     for(let i=0; i < avatarContainer.length; i ++){
         avatarContainer[i].style.width = '42px'
         let avatarImage = avatarContainer[i].getElementsByTagName('img')[0]
-        avatarImage.setAttribute('src', 'https://eddyarellanes.github.io/oracle-widget/assets/avatar.jpg')
+        avatarImage.setAttribute('src', 'https://eddyarellanes.github.io/oracle-widget/assets/avatar.png')
         avatarImage.style.width = '46px'
         avatarImage.style.height = '31px'                        
     }        
