@@ -8,7 +8,7 @@ Webpage Color: #B51F1F
 Webapge Color 2: #010000
 */
 var initPromise = Bots.init({
-    appId: '5b3cfe33d890e60022b7fefd',
+    appId: '5c6c96b983f52e002820fb8f',
     locale: 'es-MX',
     businessName: 'Sara',
     businessIconUrl: 'https://eddyarellanes.github.io/oracle-widget/assets/logo.png',        
