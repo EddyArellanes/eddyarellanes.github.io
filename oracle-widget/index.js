@@ -10,7 +10,7 @@ Webapge Color 2: #010000
 var initPromise = Bots.init({
     appId: '5c6c96b983f52e002820fb8f',
     locale: 'es-MX',
-    businessName: 'Sara',
+    businessName: 'Sisa',
     businessIconUrl: 'https://eddyarellanes.github.io/oracle-widget/assets/logo.png',        
     imageUploadEnabled: true,
     locationEnabled: false,
