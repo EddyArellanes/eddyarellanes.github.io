@@ -1,14 +1,13 @@
-//To Handle Dom of iframe   
-var iframe
-//Put your Bot appId en the variable appId    
+
+
 /*
-La Costeña
+Guideline Colores - Specific Palettes
 Guideline Color: #B51F1F
 Webpage Color: #B51F1F
 Webapge Color 2: #010000
 */
 var initPromise = Bots.init({
-    appId: '5c6c96b983f52e002820fb8f',
+    appId: '5c6c96b983f52e002820fb8f', //Put your Bot appId en the variable appId   
     locale: 'es-MX',
     businessName: 'Sisa',
     businessIconUrl: 'https://eddyarellanes.github.io/oracle-widget/assets/logo.png',        
@@ -52,9 +51,20 @@ var initPromise = Bots.init({
         }    
 });
 
+
+/**
+ * The next Features are for cover specific customization for a Widget, since this Widget is a ReactJS compiled code, it's needed
+ *  to use hard Vanilla Javascript to overwrite some styles and so on. - Eddy :c
+ */
+//If you can use other fontfamily for the Widget, put the name of the Family according to google fonts api
+//Example: https://fonts.googleapis.com/css?family=Roboto then var fontFamily = 'Roboto'
+
+var fontFamily = 'Roboto'
+//To Handle Dom of iframe   
+var iframe 
+
 Bots.on('ready', function(){
-    iframe = document.getElementById('web-messenger-container')                    
-    iframe.style.zIndex  = '10000'
+    topWidget()
     changeFont() 
     changeAvatar()        
 });    
@@ -62,8 +72,14 @@ Bots.on('message:received', function(message) {
     changeAvatar()        
 });
 Bots.on('widget:opened', function() {
-    hideLocation()
+    //hideLocation()
+    hideButtons()
 });
+//This function set the z-index of the Widget to highest possible
+function topWidget(){
+    iframe = document.getElementById('web-messenger-container')                    
+    iframe.style.zIndex  = '10000'
+}
 //Change the Bot Avatar Icon
 function changeAvatar(){                        
     let avatarContainer = iframe.contentWindow.document.querySelectorAll('.msg-avatar')
@@ -78,14 +94,13 @@ function changeAvatar(){
 }
 //Change the Helvetica default Font to Palanquin
 function changeFont(){ 
-    /*
+    
     let newStyle = document.createElement("style");   
-    newStyle.setAttribute('href', "https://fonts.googleapis.com/css?family=Palanquin")
+    newStyle.setAttribute('href', `https://fonts.googleapis.com/css?family=${fontFamily}`)
     newStyle.setAttribute('rel', 'stylesheet')
     iframe.contentWindow.document.head.appendChild(newStyle);                   
-    */
     container = iframe.contentWindow.document.getElementById('container')
-    container.style.fontFamily = 'Calibri'
+    container.style.fontFamily = fontFamily
     
     
 }
@@ -95,6 +110,28 @@ function hideLocation(){
     newStyle.innerHTML = `            
         .upload-container > div > div:last-child{
             display:none!important;
+        }            
+        `
+    iframe.contentWindow.document.head.appendChild(newStyle);                   
+}
+//Hide Main button with the options
+function hideButtons(){  
+    let newStyle = document.createElement("style");      
+    newStyle.innerHTML = `            
+        #footer > div:first-child{
+            display:none!important;
+        }            
+        `
+    iframe.contentWindow.document.head.appendChild(newStyle);                   
+
+    alignTextBox()
+}
+//If you use hideButtons, it call it for create a little margin in text box
+function alignTextBox(){
+    let newStyle = document.createElement("style");      
+    newStyle.innerHTML = `            
+        #footer > form{
+            margin-left: 16px!important;
         }            
         `
     iframe.contentWindow.document.head.appendChild(newStyle);                   
