@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">  
+  <link rel="shortcut icon" href="chatbot-widget/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+  <title>Widget Test</title>
+</head>
+<body>
+  <div class="gridSpace">
+    <div class="gridItem gradient-Orange shadow-box">
+      <p>Oracle Widget Laboratory Test</p>
+      <img height="150" width="150" src="https://orig00.deviantart.net/652a/f/2017/280/2/c/uka_uka_by_pdexter-dbptnmi.gif">
+    </div>
+  </div>
+  <script>
+    !function(e,t,n,r){
+        function s(){try{var e;if((e="string"==typeof this.response?JSON.parse(this.response):this.response).url){var n=t.getElementsByTagName("script")[0],r=t.createElement("script");r.async=!0,r.src=e.url,n.parentNode.insertBefore(r,n)}}catch(e){}}var o,p,a,i=[],c=[];e[n]={init:function(){o=arguments;var e={then:function(t){return c.push({type:"t",next:t}),e},catch:function(t){return c.push({type:"c",next:t}),e}};return e},on:function(){i.push(arguments)},render:function(){p=arguments},destroy:function(){a=arguments}},e.__onWebMessengerHostReady__=function(t){if(delete e.__onWebMessengerHostReady__,e[n]=t,o)for(var r=t.init.apply(t,o),s=0;s<c.length;s++){var u=c[s];r="t"===u.type?r.then(u.next):r.catch(u.next)}p&&t.render.apply(t,p),a&&t.destroy.apply(t,a);for(s=0;s<i.length;s++)t.on.apply(t,i[s])};var u=new XMLHttpRequest;u.addEventListener("load",s),u.open("GET",r+"/loader.json",!0),u.responseType="json",u.send()
+    }(window,document,"Bots", "/chatbot-widget");
+  </script>
+  <script src='/chatbot-widget/index.js'></script>
+  <style> 
+    body{
+        margin: 0;
+        padding: 0;      
+        height: 100%;
+        width: 100%;
+        background-image: url('chatbot-widget/background.jpg');
+        background-size: cover;
+        font-family: 'Exo';
+    }    
+ 
+    .gridSpace {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 10px;
+      grid-auto-rows: 200px;
+      grid-template-areas: 
+        ". a a ."
+        ". a a .";
+      
+    }
+    .gridItem {
+      grid-area: a;
+      align-self: center;
+      justify-self: center;     
+      color: white;
+      font-size: 24px;
+      font-weight: bolder;
+      padding: 16px;
+      border-radius: 2px;
+    }
+    .gridItem img{
+      display: flex;
+      margin: 0 auto;
+    }
+    .gridItem img:active{
+      transform: scale(2)
+    }
+    .gradient-Orange{
+      /*background: linear-gradient(to right, rgba(197,32,40,1) 0%, rgba(107,10,15,1) 0%, rgba(203,1,11,1) 90%, rgba(203,1,11,1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c52028', endColorstr='#cb010b', GradientType=1 );
+      */
+      background: linear-gradient(to right, rgba(197,32,40,1) 0%, rgba(107,10,15,1) 0%, rgba(203,1,11,1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c52028', endColorstr='#cb010b', GradientType=1 );
+    }
+    .shadow-box{
+      -webkit-box-shadow: 3px 4px 10px 0px rgba(0,0,0,0.75);
+      -moz-box-shadow: 3px 4px 10px 0px rgba(0,0,0,0.75);
+      box-shadow: 3px 4px 10px 0px rgba(0,0,0,0.75);
+    }
+    iframe{
+      font-family: 'Exo';
+    }
+  </style>
+</body>
+</html>
