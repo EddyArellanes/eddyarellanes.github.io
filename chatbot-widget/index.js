@@ -2,21 +2,21 @@
 
 /*
 Guideline Colores - Specific Palettes
-Guideline Color: #B51F1F
-Webpage Color: #B51F1F
+Guideline Color: ##99CF16
+Webpage Color: ##99CF16
 Webapge Color 2: #010000
 */
 var initPromise = Bots.init({
-  appId: '5c6c96b983f52e002820fb8f', //Put your Bot appId en the variable appId   
+  appId: '5d72a9b30ad4ad000f3656c5', //Put your Bot appId en the variable appId   
   locale: 'es-MX',
-  businessName: 'Sisa',
+  businessName: 'Viva Chatbot',
   businessIconUrl: '/chatbot-widget/assets/logo.png',
   imageUploadEnabled: true,
   locationEnabled: false,
   customColors: {
-    brandColor: 'B51F1F',
-    conversationColor: 'B51F1F',
-    actionColor: '010000',
+    brandColor: '99CF16',
+    conversationColor: '99CF16',
+    actionColor: 'FFFFFF',
   },
 
   customText: {
@@ -28,7 +28,7 @@ var initPromise = Bots.init({
     headerText: '',
     inputPlaceholder: 'Escribe un mensaje...',
     invalidFileError: 'Sólo están permitidas imágenes. Elije un archivo con una extensión válida (jpg, jpeg, png, gif, or bmp).',
-    introductionText: 'Tu asistente virtual de UAP!',
+    introductionText: 'Tu asistente virtual de VIVA!',
     locationNotSupported: 'Tu navegador no tiene soporte para servicios de localización. Por favor introduce tu localización manualmente.',
     locationSecurityRestriction: 'Este sitio web no tiene acceso a tu localización. Por favor introduce tu localización manualmente.',
     locationSendingFailed: 'No se pudo enviar la ubicación',
@@ -110,7 +110,7 @@ function changeAvatar() {
 }
 //Change the Helvetica default Font to Palanquin
 function changeFont() {
-
+  
   const customFont = new FontFace( fontFamily, `url(${fontUrl})`)
   customFont.load().then(function(loaded_face) {   
     
