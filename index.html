@@ -1,79 +1,297 @@
 <!DOCTYPE html>
 <html lang="es">
+<style type="text/css">
+  .header-background{
+    background-image: url('images/background.jpeg');
+    background-size: cover;
+    padding: 3%;
+
+  }
+  .title{
+    font-size: 3.2em!important;
+    padding-top: 0!important;
+  }
+  .subtitle{
+    font-size: 2.3em!important;
+  }
+  .subsubtitle{
+    font-size: 2.0em!important;
+  }
+  .devicon-size{
+    font-size: 2.6em!important; 
+  }
+</style>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">  
   <link rel="shortcut icon" href="images/favicon.png">
-  <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
-  <title>Widget Test</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta title="Eddy Arellanes Bastida">
+  <meta name="description" content="Soy Eddy Arellanes Bastida y ésta es mi Página donde pueden ver mi trayectoria profesional así como mis habilidades, información y pasatiempos">
+    <meta name="author" content="Eddy Arellanes Bastida">
+    <meta name="owner" content="Eddy Arellanes Bastida">
+    <meta name="keywords" content="Eddy,Arellanes,Bastida">
+    <meta name="robots" content="index, follow">
+  <title>Eddy Arellanes Bastida</title>
 </head>
 <body>
-  <div class="gridSpace">
-    <div class="gridItem gradient-Orange shadow-box">
-      <p>Oracle Widget Laboratory Test</p>
-      <img height="150" width="150" src="https://orig00.deviantart.net/652a/f/2017/280/2/c/uka_uka_by_pdexter-dbptnmi.gif">
+  <header class="white-text header-background Home">
+    <h1 class="title">Eddy Arellanes Bastida</h1>
+    <h2 class="subtitle">¡Bienvenido a mi pequeño espacio!</h2>
+  </header>
+  <nav class="black">
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo"><i class="large material-icons white-text">wb_sunny</i></a>
+            <ul class="right hide-on-med-and-down side-nav" id="mobile-demo">
+              <li><a href="#Home"><i class="material-icons left">home</i>Inicio</a></li>
+              <li><a href="aboutme.html"><i class="material-icons left">face</i>Acerca de Mí</a></li>
+              <li><a href="#Skills"><i class="material-icons left">insert_chart</i>Habilidades</a></li>
+              <li><a href="#Projects"><i class="material-icons left">work</i>Proyectos</a></li>
+              <li><a href="blog.html"><i class="material-icons left">note</i>Blog</a></li>
+            </ul>
+            <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul id="slide-out" class="sidenav">
+            <li><a href="#Home" class="waves-effect hamburguer"><i class="material-icons left">home</i>Inicio</a></li>            
+              <li><a href="aboutme.html" class="waves-effect "><i class="material-icons left">face</i>Acerca de Mí</a></li>
+            <li><a href="#Skills" class="waves-effect hamburguer"><i class="material-icons left">insert_chart</i>Habilidades</a></li>                     
+            <li><a href="#Projects" class="waves-effect hamburguer"><i class="material-icons left">work</i>Proyectos</a></li>       
+            <li><a href="blog.html"><i class="material-icons left">note</i>Blog</a></li>            
+          </ul>
+        </div>
+
+    </nav>
+  <main class="">
+    <div class="row" id="AboutMe">
+      <div class="col s12 m6">
+          <h3 class="header subsubtitle">Acerca de Mí</h3>
+          <div class="card horizontal">
+            <div class="card-image">
+                <img src="images/profile.jpg" height="400" class="hide-on-small-only" alt="profile">
+            </div>
+            <div class="card-stacked">
+              <div class="card-content">
+                <p>Mi nombre es Eddy Arellanes Bastida, actualmente tengo 23 años y soy Desarrollador de Software, enfocado principalmente en el Web y Mobile Development.</p>
+                <p>Soy entusiasta de la Informática y estoy interesado en Data Science, IA, Seguridad Informática, Servidores, y mucho más.</p>
+              </div>
+              <div class="card-action">
+                <a href="aboutme.html" class="black-text waves-effect">¡Conoce más sobre mí!</a>
+              </div>
+            </div>
+          </div>
+       </div>
+
+       <div class="col s12 m6">
+          <h3 class="header subsubtitle">Intereses</h3>
+          <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+              <img class="activator hide-on-small-only" src="images/topics.jpg" height="290" alt="topics">
+            </div>
+            <div class="card-content">
+              <span class="card-title activator grey-text text-darken-4">Sobre mi Carrera<i class="material-icons right">more_vert</i></span>
+              <p><a href="aboutme.html">Otros Intereses</a></p>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4">Tópicos Principales<i class="material-icons right">close</i></span>
+              <ul>
+                <li><i class="material-icons">code</i>Desarrollo de Aplicaciones Web</li>
+                <li><i class="material-icons">phone_android</i>Desarrollo de Aplicaciones Móviles</li>
+                <li><i class="material-icons">videogame_asset</i>Desarrollo de Videojuegos</li>
+                <li><i class="material-icons">security</i>Seguridad Informática y Pentesting</li>
+                <li><i class="material-icons">cloud</i>Administración de Servidores</li>
+                <li><i class="material-icons">storage</i>Ciencia de Datos</li>
+                <li><i class="material-icons">blur_off</i>Inteligencia Artificial</li>
+              </ul>
+            </div>
+         </div>
+          
+       </div>
     </div>
-  </div>
-  <script>
-    !function(e,t,n,r){
-        function s(){try{var e;if((e="string"==typeof this.response?JSON.parse(this.response):this.response).url){var n=t.getElementsByTagName("script")[0],r=t.createElement("script");r.async=!0,r.src=e.url,n.parentNode.insertBefore(r,n)}}catch(e){}}var o,p,a,i=[],c=[];e[n]={init:function(){o=arguments;var e={then:function(t){return c.push({type:"t",next:t}),e},catch:function(t){return c.push({type:"c",next:t}),e}};return e},on:function(){i.push(arguments)},render:function(){p=arguments},destroy:function(){a=arguments}},e.__onWebMessengerHostReady__=function(t){if(delete e.__onWebMessengerHostReady__,e[n]=t,o)for(var r=t.init.apply(t,o),s=0;s<c.length;s++){var u=c[s];r="t"===u.type?r.then(u.next):r.catch(u.next)}p&&t.render.apply(t,p),a&&t.destroy.apply(t,a);for(s=0;s<i.length;s++)t.on.apply(t,i[s])};var u=new XMLHttpRequest;u.addEventListener("load",s),u.open("GET",r+"/loader.json",!0),u.responseType="json",u.send()
-    }(window,document,"Bots", "/chatbot-widget");
-  </script>
-  <script src='/chatbot-widget/index.js'></script>
-  <style> 
-    body{
-        margin: 0;
-        padding: 0;      
-        height: 100%;
-        width: 100%;
-        background-image: url('images/background.jpg');
-        background-size: cover;
-        font-family: 'Exo';
-    }    
- 
-    .gridSpace {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-gap: 10px;
-      grid-auto-rows: 200px;
-      grid-template-areas: 
-        ". a a ."
-        ". a a .";
-      
-    }
-    .gridItem {
-      grid-area: a;
-      align-self: center;
-      justify-self: center;     
-      color: white;
-      font-size: 24px;
-      font-weight: bolder;
-      padding: 16px;
-      border-radius: 2px;
-    }
-    .gridItem img{
-      display: flex;
-      margin: 0 auto;
-    }
-    .gridItem img:active{
-      transform: scale(2)
-    }
-    .gradient-Orange{
-      /*background: linear-gradient(to right, rgba(197,32,40,1) 0%, rgba(107,10,15,1) 0%, rgba(203,1,11,1) 90%, rgba(203,1,11,1) 100%);
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c52028', endColorstr='#cb010b', GradientType=1 );
-      */
-      background: linear-gradient(to right, rgba(197,32,40,1) 0%, rgba(107,10,15,1) 0%, rgba(203,1,11,1) 100%);
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c52028', endColorstr='#cb010b', GradientType=1 );
-    }
-    .shadow-box{
-      -webkit-box-shadow: 3px 4px 10px 0px rgba(0,0,0,0.75);
-      -moz-box-shadow: 3px 4px 10px 0px rgba(0,0,0,0.75);
-      box-shadow: 3px 4px 10px 0px rgba(0,0,0,0.75);
-    }
-    iframe{
-      font-family: 'Exo';
-    }
-  </style>
+
+    <div class="row" id="Skills">
+      <div class="col s12 m12">
+          <h3 class="header subsubtitle">Habilidades</h3>
+          <div class="card horizontal">           
+              <div class="card-stacked">
+                <div class="card-content">
+                    <p>Mis habilidades principalmente están enfocadas a la rama de Informática y se dividen así:</p>                  
+                    <ul class="collapsible popout">
+                  <li>
+                    <div class="collapsible-header"><i class="material-icons">code</i>Desarrollo Web</div>
+                    <div class="collapsible-body">
+                      <ul>
+                        <li>
+                          <span>Frontend</span>
+                        </li>
+                        <li>                                        
+                          <span>
+                            <i class="devicon-html5-plain-wordmark colored devicon-size"></i>
+                          </span>                           
+                        
+                          <span>
+                            <i class="devicon-css3-plain-wordmark colored devicon-size"></i>
+                          </span>                           
+                        
+                          <span>
+                            <i class="devicon-javascript-plain colored devicon-size"></i>
+                          </span> 
+                          <span>
+                            <i class="devicon-vuejs-plain-wordmark colored devicon-size"></i>
+                          </span> 
+                          <span>
+                            <i class="devicon-react-original-wordmark colored devicon-size"></i>
+                          </span> 
+                        </li>
+                        <li>
+                          <span>Backend</span>
+                        </li>
+                        <li>
+                          <span>
+                            <i class="devicon-php-plain colored devicon-size"></i>
+                          </span>                                                 
+                          <span>
+                            <i class="devicon-codeigniter-plain-wordmark colored devicon-size"></i>
+                          </span>             
+                          <span>
+                            <i class="devicon-python-plain-wordmark colored devicon-size"></i>            
+                          </span>
+                          <span>
+                            <i class="devicon-django-plain-wordmark colored devicon-size"></i>
+                          </span>
+                          <span>
+                            <i class="devicon-mysql-plain-wordmark colored devicon-size"></i>
+                          </span>                         
+                        <li>
+                          <span>Project Managament</span>
+                        </li>
+                        <li>
+                          <span>
+                            <i class="devicon-git-plain-wordmark colored devicon-size"></i>
+                          </span>                       
+                          <span>
+                            <i class="devicon-github-plain-wordmark colored devicon-size"></i>
+                          </span>                       
+                          <span>
+                            <i class="devicon-gitlab-plain-wordmark colored devicon-size"></i>
+                          </span>
+                          <span>
+                            <i class="devicon-trello-plain-wordmark colored devicon-size"></i>
+                          </span>                           
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="collapsible-header"><i class="material-icons">phone_android</i>Desarrollo Móvil</div>
+                    <div class="collapsible-body">
+                      <ul>
+                        <li>
+                          <span>Android</span>    
+                        </li>
+                        <li>
+                          <span>
+                            <i class="devicon-java-plain-wordmark colored devicon-size"></i>
+                          </span>                             
+                        </li>
+                        <li>
+                          <span>iOS</span>    
+                        </li>
+                        <li>
+                          <span>
+                            <i class="devicon-swift-plain-wordmark colored devicon-size"></i>
+                          </span>                             
+                        </li>
+                        </li>
+                      </ul>                       
+                    </div>
+                  </li>
+                  <li>
+                      <div class="collapsible-header"><i class="material-icons">cloud</i>Administración   de Servidores</div>
+                      <div class="collapsible-body">
+                        <ul>
+                          <li>
+                          <span>IaaS Amazon Web Services <i class="devicon-amazonwebservices-original colored devicon-size"></i></span>   
+                          </li>
+                          <li>
+                            <span>PaaS Heroku <i class="devicon-heroku-original colored   devicon-size"></i></span>   
+                          </li>
+                          <li>
+                            <span>Hosting Tradicional con Cpanel 
+                              <i class="devicon-apache-plain-wordmark colored devicon-size"></i></span>   
+                          </li>
+                        </ul>
+                        
+
+                        
+                    </div>
+                  </li>
+              </ul>
+                </div>
+                
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="row" id="Projects">
+      <div class="col s12 m12">
+          <h3 class="header subsubtitle">Portafolio</h3>
+          <div class="card horizontal">           
+              <div class="card-stacked">
+                <div class="card-content">
+                  <h5>Próximamente...</h5>                  
+                </div>                
+              </div>
+          </div>
+      </div>
+    </div>
+  </main>
+  
+
+    <footer class="page-footer black">
+        <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Contacto</h5>
+                <p class="grey-text text-lighten-4">Si deseas ponerte en contacto conmigo por alguna razón, te dejó mis datos de contacto</p>
+                <ul>
+                  <li><i class="material-icons">email</i>Teléfono: <strong>5574852528</strong></li>
+                  <li><i class="material-icons">phone</i>Correo Electrónico: <strong>eddyarellanes.developer@gmail.com</strong></li>
+                </ul>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Redes Sociales</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#" target="_blank">Facebook</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://www.linkedin.com/in/eddy-arellanes-bastida-440025ab/" target="_blank">Linkedin</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://github.com/EddyArellanes" target="_blank">Github</a></li>
+                  <li><a class="grey-text text-lighten-3" href="https://codefights.com/profile/eddyinferno" target="_blank">Codefights</a></li>
+                </ul>
+              </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+              © Enero 2018 Última actualización
+              <a class="grey-text text-lighten-4 right" href="#!"><i class="material-icons">link</i>Página de Facebook: Technology Corps</a>
+            </div>
+        </div>
+    </footer>
 </body>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">   
+<link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js"></script>
+<script src='https://code.jquery.com/jquery-2.1.3.min.js'></script>
+<!--<script src="https://acobot.ai/js/w?key=429272.HQbBTGdLMQcGl4hM"></script>-->
+<script type="text/javascript" src="js/kommunicate.js"></script>
+
+<script type="text/javascript">
+  let collapsible = document.querySelector('.collapsible');
+    M.Collapsible.init(collapsible, {accordion:false});
+
+    let sidenav = document.querySelector('.sidenav');
+    var sidenavComponent = M.Sidenav.init(sidenav, {accordion:false});
+    var hamburguerElements = document.getElementsByClassName("hamburguer");
+    for(let counter = 0; counter<hamburguerElements.length; counter++){
+        hamburguerElements[counter].addEventListener("click", ()=>sidenavComponent.close())
+    }
+</script>
 </html>
