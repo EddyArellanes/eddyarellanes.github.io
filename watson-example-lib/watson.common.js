@@ -1,14 +1,5 @@
-(function webpackUniversalModuleDefinition(root, factory) {
-	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
-	else if(typeof define === 'function' && define.amd)
-		define([], factory);
-	else if(typeof exports === 'object')
-		exports["chatbot-widget"] = factory();
-	else
-		root["chatbot-widget"] = factory();
-})((typeof self !== 'undefined' ? self : this), function() {
-return /******/ (function(modules) { // webpackBootstrap
+module.exports =
+/******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -5265,5 +5256,4 @@ var App_component = normalizeComponent(
 /***/ })
 
 /******/ })["default"];
-});
-//# sourceMappingURL=chatbot-widget.umd.js.map
+//# sourceMappingURL=watson.common.js.map

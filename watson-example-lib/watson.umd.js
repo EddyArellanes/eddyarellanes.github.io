@@ -1,5 +1,14 @@
-module.exports =
-/******/ (function(modules) { // webpackBootstrap
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["watson"] = factory();
+	else
+		root["watson"] = factory();
+})((typeof self !== 'undefined' ? self : this), function() {
+return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -5256,4 +5265,5 @@ var App_component = normalizeComponent(
 /***/ })
 
 /******/ })["default"];
-//# sourceMappingURL=chatbot-widget.common.js.map
+});
+//# sourceMappingURL=watson.umd.js.map
