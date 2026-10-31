@@ -1,4 +1,5 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
+import type { Category } from '../data/site';
 import type { Lang } from '../i18n/ui';
 
 export type Post = CollectionEntry<'blog'>;
@@ -19,4 +20,13 @@ export async function getPosts(lang: Lang) {
 export async function hasTranslation(post: Post, lang: Lang) {
   const posts = await getPosts(lang);
   return posts.some((p) => postSlug(p) === postSlug(post));
+}
+
+/** Categories that have at least one post in the language, with their post counts, in CATEGORIES order. */
+export async function getCategoryCounts(lang: Lang) {
+  const counts = new Map<Category, number>();
+  for (const post of await getPosts(lang)) {
+    for (const tag of post.data.tags) counts.set(tag, (counts.get(tag) ?? 0) + 1);
+  }
+  return counts;
 }

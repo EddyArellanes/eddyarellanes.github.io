@@ -2,7 +2,7 @@
 title: Reviving my website with Astro
 description: After years offline, my personal site is back, rebuilt as a static, bilingual site with Astro and hosted on GitHub Pages.
 pubDate: 2026-10-31
-tags: [astro, meta]
+tags: [software-engineering]
 ---
 
 My personal website has been offline for a while. The previous version (2020) was built with **Nuxt 2**, **Vuetify** and **Firebase**, and before that I had a hand-made site from 2016–2019.

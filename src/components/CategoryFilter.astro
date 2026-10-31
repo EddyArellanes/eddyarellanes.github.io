@@ -1,0 +1,46 @@
+---
+import { CATEGORIES, CATEGORY_KEYS, type Category } from '../data/site';
+import type { Lang } from '../i18n/ui';
+import { localizePath, useTranslations } from '../i18n/utils';
+import { getCategoryCounts, getPosts } from '../lib/blog';
+
+interface Props {
+  lang: Lang;
+  active?: Category;
+}
+
+const { lang, active } = Astro.props;
+const t = useTranslations(lang);
+const counts = await getCategoryCounts(lang);
+const total = (await getPosts(lang)).length;
+const items = [
+  { href: localizePath(lang, '/blog/'), label: t('blog.all'), count: total, isActive: !active },
+  ...CATEGORY_KEYS.filter((key) => counts.has(key)).map((key) => ({
+    href: localizePath(lang, `/blog/tags/${key}/`),
+    label: CATEGORIES[key][lang],
+    count: counts.get(key)!,
+    isActive: key === active,
+  })),
+];
+---
+
+{
+  items.length > 1 && (
+    <nav aria-label="Categories" class="mt-8 flex flex-wrap gap-2">
+      {items.map(({ href, label, count, isActive }) => (
+        <a
+          href={href}
+          aria-current={isActive ? 'page' : undefined}
+          class:list={[
+            'rounded-full border px-3 py-1 text-sm transition-colors',
+            isActive
+              ? 'border-brand-500 bg-brand-500 text-white'
+              : 'border-zinc-300 text-zinc-600 hover:border-brand-500 hover:text-brand-500 dark:border-zinc-700 dark:text-zinc-400',
+          ]}
+        >
+          {label} <span class:list={['ml-1 text-xs', isActive ? 'text-white/80' : 'text-zinc-400']}>{count}</span>
+        </a>
+      ))}
+    </nav>
+  )
+}

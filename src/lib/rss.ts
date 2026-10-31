@@ -1,6 +1,6 @@
 import rss from '@astrojs/rss';
 import type { APIContext } from 'astro';
-import { SITE } from '../data/site';
+import { CATEGORIES, SITE } from '../data/site';
 import type { Lang } from '../i18n/ui';
 import { localizePath, useTranslations } from '../i18n/utils';
 import { getPosts, postSlug } from './blog';
@@ -17,7 +17,7 @@ export async function blogFeed(context: APIContext, lang: Lang) {
       title: post.data.title,
       description: post.data.description,
       pubDate: post.data.pubDate,
-      categories: post.data.tags,
+      categories: post.data.tags.map((tag) => CATEGORIES[tag][lang]),
       link: localizePath(lang, `/blog/${postSlug(post)}/`),
     })),
   });

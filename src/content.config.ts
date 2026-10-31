@@ -1,6 +1,7 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
+import { CATEGORY_KEYS } from './data/site';
 
 const blog = defineCollection({
   // Posts live in src/content/blog/<lang>/<slug>.md; ids look like "en/my-post".
@@ -10,7 +11,7 @@ const blog = defineCollection({
     description: z.string(),
     pubDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
-    tags: z.array(z.string()).default([]),
+    tags: z.array(z.enum(CATEGORY_KEYS)).default([]),
     draft: z.boolean().default(false),
   }),
 });

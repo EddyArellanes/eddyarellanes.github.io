@@ -1,0 +1,33 @@
+---
+import { CATEGORIES, type Category } from '../data/site';
+import type { Lang } from '../i18n/ui';
+import { localizePath } from '../i18n/utils';
+
+interface Props {
+  tags: Category[];
+  lang: Lang;
+  size?: 'sm' | 'xs';
+}
+
+const { tags, lang, size = 'xs' } = Astro.props;
+---
+
+{
+  tags.length > 0 && (
+    <ul class="relative z-10 flex flex-wrap gap-2">
+      {tags.map((tag) => (
+        <li>
+          <a
+            href={localizePath(lang, `/blog/tags/${tag}/`)}
+            class:list={[
+              'inline-block rounded-full bg-zinc-100 px-2.5 py-0.5 text-zinc-600 transition-colors hover:bg-brand-500/15 hover:text-brand-500 dark:bg-zinc-800 dark:text-zinc-400',
+              size === 'sm' ? 'text-sm' : 'text-xs',
+            ]}
+          >
+            #{CATEGORIES[tag][lang]}
+          </a>
+        </li>
+      ))}
+    </ul>
+  )
+}

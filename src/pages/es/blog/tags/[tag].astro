@@ -1,0 +1,12 @@
+---
+import type { GetStaticPaths } from 'astro';
+import BlogIndexPage from '../../../../views/BlogIndexPage.astro';
+import { getCategoryCounts } from '../../../../lib/blog';
+
+export const getStaticPaths = (async () => {
+  const counts = await getCategoryCounts('es');
+  return [...counts.keys()].map((tag) => ({ params: { tag }, props: { tag } }));
+}) satisfies GetStaticPaths;
+---
+
+<BlogIndexPage lang="es" tag={Astro.props.tag} />

@@ -28,12 +28,20 @@ title: My new post
 description: One-line summary used in listings, SEO and RSS.
 pubDate: 2026-11-01
 updatedDate: 2026-11-05 # optional
-tags: [astro, gamedev] # optional
+tags: [software-engineering, videogames] # optional, see categories below
 draft: true # optional, drafts only show up in `npm run dev`
 ---
 
 Content goes here.
 ```
+
+### Categories
+
+`tags` must be keys of `CATEGORIES` in `src/data/site.ts` (`software-engineering`, `videogames`, `sports`, `books`);
+an unknown tag fails the build. Each category gets a page at `/blog/tags/<key>/` (and `/es/blog/tags/<key>/`)
+with a filter on the blog index. To add one, add a key with its English and Spanish labels to `CATEGORIES`.
+
+### Translations
 
 To publish a translation, use the **same file name** in the other language folder
 (`src/content/blog/en/my-post.md` ↔ `src/content/blog/es/my-post.md`). The post links the two automatically.
@@ -43,7 +51,7 @@ To publish a translation, use the **same file name** in the other language folde
 | What | Where |
 | --- | --- |
 | UI text (EN/ES) | `src/i18n/ui.ts` |
-| Name, social links, career timeline, projects | `src/data/site.ts` |
+| Name, social links, career timeline, projects, blog categories | `src/data/site.ts` |
 | Page layouts | `src/views/*.astro` (route files in `src/pages` are thin per-language wrappers) |
 | Theme colors | `src/styles/global.css` |
 

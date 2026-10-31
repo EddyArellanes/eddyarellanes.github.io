@@ -109,3 +109,14 @@ export interface Project {
 
 /** Add public projects here; the Projects page shows an empty state while this is empty. */
 export const PROJECTS: Project[] = [];
+
+/** Blog categories. Post frontmatter `tags` must use these keys; the key is also the URL slug. */
+export const CATEGORIES = {
+  'software-engineering': { en: 'Software Engineering', es: 'Ingeniería de Software' },
+  videogames: { en: 'Video Games', es: 'Videojuegos' },
+  sports: { en: 'Sports', es: 'Deportes' },
+  books: { en: 'Books', es: 'Libros' },
+} as const satisfies Record<string, Localized>;
+
+export type Category = keyof typeof CATEGORIES;
+export const CATEGORY_KEYS = Object.keys(CATEGORIES) as [Category, ...Category[]];

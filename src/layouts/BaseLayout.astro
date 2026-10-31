@@ -12,6 +12,8 @@ interface Props {
   lang: Lang;
   /** Path of this page in the other language; defaults to the same path. `null` when there is no translation. */
   alternatePath?: string | null;
+  /** Where the language switcher goes when there is no translation; defaults to the other language's home. */
+  fallbackPath?: string;
   type?: 'website' | 'article';
 }
 
@@ -63,7 +65,7 @@ const rssUrl = new URL(localizePath(lang, '/rss.xml'), Astro.site);
     </script>
   </head>
   <body class="flex min-h-screen flex-col">
-    <Header lang={lang} alternatePath={alternatePath ?? localizePath(otherLang(lang), '/')} />
+    <Header lang={lang} alternatePath={alternatePath ?? Astro.props.fallbackPath ?? localizePath(otherLang(lang), '/')} />
     <main class="mx-auto w-full max-w-3xl flex-1 px-5 py-12">
       <slot />
     </main>
