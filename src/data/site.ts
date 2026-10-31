@@ -14,7 +14,7 @@ export const SITE = {
 
 export const SOCIALS = [
   { name: 'GitHub', url: 'https://github.com/EddyArellanes', icon: 'github' },
-  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/eddy-arellanes-bastida/', icon: 'linkedin' },
+  { name: 'LinkedIn', url: 'https://x.com/eddyarellanes', icon: 'linkedin' },
   { name: 'X', url: 'https://x.com/eddyarellanes', icon: 'x' },
 ] as const;
 
