@@ -1,0 +1,61 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import { SITE } from '../data/site';
+import type { Lang } from '../i18n/ui';
+import { localizePath, useTranslations } from '../i18n/utils';
+import { getPosts } from '../lib/blog';
+
+const { lang } = Astro.props as { lang: Lang };
+const t = useTranslations(lang);
+const latest = (await getPosts(lang)).slice(0, 3);
+---
+
+<BaseLayout title={SITE.name} description={t('home.description')} lang={lang}>
+  <section class="flex flex-col-reverse items-start gap-8 sm:flex-row sm:items-center">
+    <div class="flex-1">
+      <p class="text-zinc-500">{t('home.greeting')}</p>
+      <h1 class="mt-1 text-4xl font-bold tracking-tight sm:text-5xl">{SITE.name}</h1>
+      <p class="mt-2 text-lg font-medium text-brand-500">{t('home.role')}</p>
+      <p class="mt-5 text-lg leading-relaxed text-zinc-600 dark:text-zinc-400">{t('home.intro')}</p>
+      <div class="mt-7 flex flex-wrap gap-3">
+        <a href={localizePath(lang, '/blog/')} class="rounded-lg bg-brand-600 px-4 py-2 font-medium text-white hover:bg-brand-500">
+          {t('home.cta.blog')}
+        </a>
+        <a
+          href={localizePath(lang, '/about/')}
+          class="rounded-lg border border-zinc-300 px-4 py-2 font-medium hover:border-brand-500 hover:text-brand-500 dark:border-zinc-700"
+        >
+          {t('home.cta.about')}
+        </a>
+      </div>
+    </div>
+    <img
+      src={SITE.avatar}
+      alt={SITE.name}
+      width="160"
+      height="160"
+      class="size-32 rounded-full ring-4 ring-brand-500/30 sm:size-40"
+    />
+  </section>
+
+  <blockquote class="mt-14 border-l-4 border-accent-400 pl-4 italic text-zinc-600 dark:text-zinc-400">
+    “{SITE.quote.text[lang]}” <span class="not-italic text-zinc-500">— {SITE.quote.author}</span>
+  </blockquote>
+
+  {
+    latest.length > 0 && (
+      <section class="mt-14">
+        <div class="flex items-baseline justify-between">
+          <h2 class="text-2xl font-bold tracking-tight">{t('home.latest')}</h2>
+          <a href={localizePath(lang, '/blog/')} class="text-sm text-brand-500 hover:underline">
+            {t('home.allPosts')}
+          </a>
+        </div>
+        <div class="divide-y divide-zinc-200 dark:divide-zinc-800">
+          {latest.map((post) => <PostCard post={post} lang={lang} />)}
+        </div>
+      </section>
+    )
+  }
+</BaseLayout>

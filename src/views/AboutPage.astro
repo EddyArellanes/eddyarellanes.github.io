@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Timeline from '../components/Timeline.astro';
+import type { Lang } from '../i18n/ui';
+import { useTranslations } from '../i18n/utils';
+
+const { lang } = Astro.props as { lang: Lang };
+const t = useTranslations(lang);
+---
+
+<BaseLayout title={t('about.title')} description={t('about.description')} lang={lang}>
+  <h1 class="text-4xl font-bold tracking-tight">{t('about.title')}</h1>
+  <p class="mt-4 text-lg text-zinc-600 dark:text-zinc-400">{t('about.intro')}</p>
+  <h2 class="mb-8 mt-12 text-2xl font-bold tracking-tight">{t('about.heading')}</h2>
+  <Timeline lang={lang} />
+</BaseLayout>

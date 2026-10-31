@@ -1,0 +1,50 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { languages } from '../i18n/ui';
+import { formatDate, localizePath, otherLang, useTranslations } from '../i18n/utils';
+import { hasTranslation, postLang, postSlug, type Post } from '../lib/blog';
+
+const { post } = Astro.props as { post: Post };
+const lang = postLang(post);
+const t = useTranslations(lang);
+const { Content } = await render(post);
+const alt = otherLang(lang);
+const alternatePath = (await hasTranslation(post, alt)) ? localizePath(alt, `/blog/${postSlug(post)}/`) : null;
+const { title, description, pubDate, updatedDate, tags } = post.data;
+---
+
+<BaseLayout title={title} description={description} lang={lang} alternatePath={alternatePath} type="article">
+  <a href={localizePath(lang, '/blog/')} class="text-sm text-brand-500 hover:underline">{t('blog.back')}</a>
+  <article class="mt-6">
+    <header>
+      <h1 class="text-4xl font-bold tracking-tight">{title}</h1>
+      <p class="mt-3 text-sm text-zinc-500">
+        <time datetime={pubDate.toISOString()}>{formatDate(pubDate, lang)}</time>
+        {updatedDate && <span>{' '}· {t('blog.updated')} {formatDate(updatedDate, lang)}</span>}
+        {
+          alternatePath && (
+            <span>
+              {' '}· {t('blog.readIn')}{' '}
+              <a href={alternatePath} hreflang={alt} class="text-brand-500 hover:underline">
+                {languages[alt]}
+              </a>
+            </span>
+          )
+        }
+      </p>
+      {
+        tags.length > 0 && (
+          <ul class="mt-3 flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <li class="rounded-full bg-zinc-100 px-2.5 py-0.5 text-xs text-zinc-600 dark:bg-zinc-800 dark:text-zinc-400">#{tag}</li>
+            ))}
+          </ul>
+        )
+      }
+    </header>
+    <div class="prose prose-zinc mt-10 max-w-none dark:prose-invert prose-a:text-brand-500 prose-img:rounded-lg prose-code:before:content-none prose-code:after:content-none">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

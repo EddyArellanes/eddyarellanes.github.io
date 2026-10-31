@@ -1,0 +1,26 @@
+---
+import type { Lang } from '../i18n/ui';
+import { formatDate, localizePath } from '../i18n/utils';
+import { postSlug, type Post } from '../lib/blog';
+
+interface Props {
+  post: Post;
+  lang: Lang;
+}
+
+const { post, lang } = Astro.props;
+---
+
+<article class="group relative py-5">
+  <time datetime={post.data.pubDate.toISOString()} class="text-sm text-zinc-500">
+    {formatDate(post.data.pubDate, lang)}
+  </time>
+  <h3 class="mt-1 text-lg font-semibold group-hover:text-brand-500">
+    <a href={localizePath(lang, `/blog/${postSlug(post)}/`)}>
+      <span class="absolute inset-0"></span>
+      {post.data.title}
+      {post.data.draft && <span class="ml-2 rounded bg-accent-400/20 px-1.5 text-xs text-accent-400">draft</span>}
+    </a>
+  </h3>
+  <p class="mt-1 text-zinc-600 dark:text-zinc-400">{post.data.description}</p>
+</article>

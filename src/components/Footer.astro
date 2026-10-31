@@ -1,0 +1,28 @@
+---
+import SocialIcon from './SocialIcon.astro';
+import { SITE, SOCIALS } from '../data/site';
+import type { Lang } from '../i18n/ui';
+import { localizePath, useTranslations } from '../i18n/utils';
+
+const { lang } = Astro.props as { lang: Lang };
+const t = useTranslations(lang);
+const linkClass = 'text-zinc-500 transition-colors hover:text-brand-500';
+---
+
+<footer class="border-t border-zinc-200 dark:border-zinc-800">
+  <div class="mx-auto flex max-w-3xl flex-col items-center justify-between gap-4 px-5 py-8 text-sm text-zinc-500 sm:flex-row">
+    <p>&copy; {new Date().getFullYear()} {SITE.name}</p>
+    <div class="flex items-center gap-4">
+      {
+        SOCIALS.map(({ name, url, icon }) => (
+          <a href={url} target="_blank" rel="me noopener noreferrer" aria-label={name} title={name} class={linkClass}>
+            <SocialIcon icon={icon} />
+          </a>
+        ))
+      }
+      <a href={localizePath(lang, '/rss.xml')} aria-label={t('footer.rss')} title={t('footer.rss')} class={linkClass}>
+        <SocialIcon icon="rss" />
+      </a>
+    </div>
+  </div>
+</footer>

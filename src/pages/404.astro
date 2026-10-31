@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { ui } from '../i18n/ui';
+---
+
+<BaseLayout title={ui.en['notFound.title']} description={ui.en['notFound.body']} lang="en" alternatePath={null}>
+  <div class="py-16 text-center">
+    <p class="text-7xl font-bold text-brand-500">404</p>
+    <h1 class="mt-4 text-2xl font-bold">{ui.en['notFound.title']} · {ui.es['notFound.title']}</h1>
+    <p class="mt-2 text-zinc-600 dark:text-zinc-400">{ui.en['notFound.body']}<br />{ui.es['notFound.body']}</p>
+    <div class="mt-8 flex justify-center gap-3">
+      <a href="/" class="rounded-lg bg-brand-600 px-4 py-2 font-medium text-white hover:bg-brand-500">{ui.en['notFound.home']}</a>
+      <a href="/es/" class="rounded-lg border border-zinc-300 px-4 py-2 font-medium hover:border-brand-500 dark:border-zinc-700">{ui.es['notFound.home']}</a>
+    </div>
+  </div>
+</BaseLayout>
