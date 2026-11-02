@@ -71,12 +71,11 @@ src/
   - Old Google App Engine records (`216.239.3x.21` `A` records, `2001:4860:4802:3x::15` `AAAA` records, `www` → `ghs.googlehosted.com`) were removed on 2026-10-31. Never re-add them: they blocked the HTTPS certificate.
   - `.dev` is on the HSTS preload list, so the site only works over HTTPS.
 
-## Status and next steps (as of 2026-10-31)
+## Status and next steps (as of 2026-11-01)
 
-- [ ] **HTTPS:** waiting on GitHub's Let's Encrypt certificate (old `AAAA` records had a 4h TTL). Check it with
-      `gh api repos/EddyArellanes/eddyarellanes.github.io/pages --jq '.https_certificate.state'`.
-      Once it's `approved`, run `gh api -X PUT repos/EddyArellanes/eddyarellanes.github.io/pages -F https_enforced=true`.
-      If it's still missing after about 24h, remove and re-add the custom domain (Settings → Pages).
+- [x] **HTTPS:** certificate issued and HTTPS enforced on 2026-11-01. GitHub's first attempt failed on cached old `AAAA` records and never retried.
+      If a certificate ever gets stuck (`.https_certificate` is null), remove and re-add the custom domain to retrigger it:
+      `gh api -X PUT repos/EddyArellanes/eddyarellanes.github.io/pages -F cname=null`, then `-f cname=eddyarellanes.dev`.
 - [ ] Optional: add GitHub's `AAAA` records for `@` (`2606:50c0:8000::153` … `2606:50c0:8003::153`).
 - [ ] Optional: delete the leftover `cloudrun` `CNAME` (→ `ghs.googlehosted.com`) at the registrar; it's unused.
 - [ ] Optional: verify the domain under GitHub account Settings → Pages (prevents domain takeover).
